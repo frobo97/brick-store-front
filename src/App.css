@@ -1,0 +1,44 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Space between cards (16px) */
+    justify-content: center; /* Center the cards horizontally */
+    padding: 1.25rem; /* Padding (20px) */
+}
+
+.brick-card {
+    flex: 1 1 calc(25% - 2rem); /* 4 columns */
+    max-width: calc(25% - 2rem); /* Max width for cards */
+    box-sizing: border-box;
+}
+
+@media (max-width: 64rem) { /* 1024px */
+    .brick-card {
+        flex: 1 1 calc(33.33% - 2rem); /* 3 columns */
+        max-width: calc(33.33% - 2rem);
+    }
+}
+
+@media (max-width: 48rem) { /* 768px */
+    .brick-card {
+        flex: 1 1 calc(50% - 2rem); /* 2 columns */
+        max-width: calc(50% - 2rem);
+    }
+}
+
+@media (max-width: 30rem) { /* 480px */
+    .brick-card {
+        flex: 1 1 100%; /* 1 column */
+        max-width: 100%;
+    }
+}
