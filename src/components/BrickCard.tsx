@@ -16,17 +16,16 @@ const BrickCard: React.FC<BrickCardProps> = (
         imgAlt,
         title,
         description,
-        buttonText = "Learn More",
         onButtonClick
     }) => {
     return (
+
         <div className="brick-card">
-            <img src={imgSrc} alt={imgAlt} className="brick-card-image"/>
-            <h2 className="brick-card-title">{title}</h2>
-            <p className="brick-card-description">{description}</p>
             {onButtonClick && (
                 <button className="brick-card-button" onClick={onButtonClick}>
-                    {buttonText}
+                    <img src={imgSrc} alt={imgAlt} className="brick-card-image"/>
+                    <h2 className="brick-card-title">{title}</h2>
+                    <p className="brick-card-description">{description}</p>
                 </button>
             )}
         </div>

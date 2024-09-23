@@ -5,7 +5,7 @@ import localImage from './utils/clipart4248425.png';
 
 const App: React.FC = () => {
     const handleClick = () => {
-        alert('Button clicked!');
+        alert('Card clicked!');
     };
 
     const cards = new Array(16).fill({
@@ -13,7 +13,6 @@ const App: React.FC = () => {
         imgAlt: "Placeholder Image",
         title: "Brick Card Example",
         description: "This is an example of the BrickCard component with an image, title, and description.",
-        buttonText: "Click Me",
     });
 
     return (
