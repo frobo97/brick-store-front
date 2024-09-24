@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, {useState} from 'react';
 import './BrickCard.css';
 
 interface BrickCardProps {
@@ -6,29 +6,41 @@ interface BrickCardProps {
     imgAlt: string;
     title: string;
     description: string;
-    buttonText?: string;
-    onButtonClick?: () => void;
 }
 
-const BrickCard: React.FC<BrickCardProps> = (
-    {
-        imgSrc,
-        imgAlt,
-        title,
-        description,
-        onButtonClick
-    }) => {
-    return (
+const BrickCard: React.FC<BrickCardProps> = ({imgSrc, imgAlt, title, description}) => {
+    const [isEnlarged, setIsEnlarged] = useState(false);
 
-        <div className="brick-card">
-            {onButtonClick && (
-                <button className="brick-card-button" onClick={onButtonClick}>
-                    <img src={imgSrc} alt={imgAlt} className="brick-card-image"/>
-                    <h2 className="brick-card-title">{title}</h2>
-                    <p className="brick-card-description">{description}</p>
-                </button>
+    const handleCardClick = () => {
+        setIsEnlarged(true); // Toggle enlarged state
+    };
+
+    const handleBackdropClick = (e: React.MouseEvent) => {
+        if (e.target === e.currentTarget) {
+            setIsEnlarged(false); // Close the card
+        }
+    };
+
+    return (
+        <>
+            {isEnlarged && (
+                <div className="backdrop" onClick={handleBackdropClick}>
+                    <div className="brick-card-enlarged">
+                        <img className="brick-card-image" src={imgSrc} alt={imgAlt}/>
+                        <h2 className="brick-card-title">{title}</h2>
+                        <p className="brick-card-description-enlarged">{description}</p>
+                    </div>
+                </div>
             )}
-        </div>
+            <div
+                className={`brick-card ${isEnlarged ? '' : ''}`}
+                onClick={handleCardClick}
+            >
+                <img className="brick-card-image" src={imgSrc} alt={imgAlt}/>
+                <h2 className="brick-card-title">{title}</h2>
+                <p className="brick-card-description">{description}</p>
+            </div>
+        </>
     );
 };
 

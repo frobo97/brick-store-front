@@ -1,4 +1,5 @@
-﻿.brick-card {
+﻿/* Default card styling */
+.brick-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +28,13 @@
     font-size: 1rem;
     color: #555;
     text-align: center;
-    margin-bottom: 12px;
+    word-wrap: break-word; /* Ensure long words or URLs break correctly */
+    /*overflow-y: hidden; !* Hide overflow if it goes beyond the card's height *!*/
+    overflow: hidden; /* Hide overflow if it goes beyond the card's height */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflowing text */
+    display: -webkit-box; /* Make it behave like a multi-line truncated block */
+    -webkit-line-clamp: 4; /* Show up to 4 lines, adjust this as needed */
+    -webkit-box-orient: vertical;
 }
 
 .brick-card-button {
@@ -37,3 +44,41 @@
     cursor: pointer;
 }
 
+/* Styling for the background cards when one is enlarged */
+.blur-background .brick-card:not(.enlarged) {
+    filter: blur(3px);
+    opacity: 0.5;
+}
+
+/* Backdrop for the enlarged card */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    backdrop-filter: blur(3px);
+}
+
+/* Enlarged card styling with scroll */
+.brick-card-enlarged {
+    position: relative;
+    width: 80vw;
+    max-width: 600px;
+    max-height: 80vh; /* Limit the height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    z-index: 100;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.brick-card-description-enlarged {
+    max-height: 60vh; /* Max height for description area to allow scrolling */
+    overflow-y: auto; /* Allow vertical scrolling for long descriptions */
+}
