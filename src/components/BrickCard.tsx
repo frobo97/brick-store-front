@@ -21,6 +21,22 @@ const BrickCard: React.FC<BrickCardProps> = ({imgSrc, imgAlt, title, description
         }
     };
 
+    const [comment, setComment] = useState(''); // State for the input field
+    const [comments, setComments] = useState<string[]>([]); // State for the list of comments
+
+    // Handle input field change
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setComment(e.target.value);
+    };
+
+    // Handle adding the comment
+    const handleAddComment = () => {
+        if (comment.trim()) { // Prevent empty comments
+            setComments([...comments, comment]); // Add comment to the list
+            setComment(''); // Clear the input field
+        }
+    };
+
     return (
         <>
             {isEnlarged && (
@@ -29,6 +45,30 @@ const BrickCard: React.FC<BrickCardProps> = ({imgSrc, imgAlt, title, description
                         <img className="brick-card-image" src={imgSrc} alt={imgAlt}/>
                         <h2 className="brick-card-title">{title}</h2>
                         <p className="brick-card-description-enlarged">{description}</p>
+
+                        <button className="add-comment-button" onClick={handleAddComment}>
+                            Add Comment
+                        </button>
+
+                        <input
+                            className="input-field"
+                            type="text"
+                            value={comment}
+                            onChange={handleInputChange}
+                            placeholder=" Whrite a comment"
+                        />
+
+                        <div className="comments-list">
+                            {comments.length > 0 ? (
+                                comments.map((cmt, index) => (
+                                    <p key={index} className="comment">
+                                        {cmt}
+                                    </p>
+                                ))
+                            ) : (
+                                <p>No comments yet</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             )}
