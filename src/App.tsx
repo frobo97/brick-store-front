@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import BrickCard from './components/BrickCard';
+import Header from './components/Header';
 import './App.css';
 import localImage from './utils/clipart4248425.png';
+import header from "./components/Header";
 
 const App: React.FC = () => {
     // Track the index of the enlarged card
@@ -16,16 +18,22 @@ const App: React.FC = () => {
     });
 
     return (
-        <div className={`card-container ${enlargedCardIndex !== null ? 'blur-background' : ''}`}>
-            {cards.map((card, index) => (
-                <BrickCard
-                    key={index}
-                    imgSrc={card.imgSrc}
-                    imgAlt={card.imgAlt}
-                    title={card.title}
-                    description={card.description}
-                />
-            ))}
+
+        <div  className="App">
+            <header className={'app-header'}>
+                <Header/>
+            </header>
+            <main className={`card-container ${enlargedCardIndex !== null ? 'blur-background' : ''}`}>
+                {cards.map((card, index) => (
+                    <BrickCard
+                        key={index}
+                        imgSrc={card.imgSrc}
+                        imgAlt={card.imgAlt}
+                        title={card.title}
+                        description={card.description}
+                    />
+                ))}
+            </main>
         </div>
     );
 };

@@ -1,0 +1,70 @@
+﻿.Header {
+    display: flex;
+    flex-direction: column; /* Stack title and buttons vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 0.5rem;
+    width: 100%;
+    margin: auto;
+    min-height: 8vh; /* Adjust the height to accommodate header content */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.header-title {
+    font-weight: bold;
+    color: black;
+    margin-bottom: 0.5rem; /* Add spacing between title and buttons */
+}
+
+.header-buttons {
+    display: flex;
+    flex-direction: row; /* Default layout: side by side */
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .header-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 0.5rem; /* Less space between buttons vertically */
+        width: 100%; /* Make buttons full width on smaller screens */
+        align-items: center; /* Ensure buttons are centered */
+    }
+
+    .button {
+        width: 80%; /* Make buttons narrower but still responsive */
+    }
+}
+
+.button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.login-button {
+    background-color: #007bff; /* Blue background */
+    color: white;
+    width: 6rem;
+}
+
+.login-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    width: 6rem;
+}
+
+.register-button {
+    background-color: #28a745; /* Green background */
+    color: white;
+    width: 6rem;
+}
+
+.register-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    width: 6rem;
+}

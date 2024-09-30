@@ -3,9 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
     text-align: center;
-    background-color: aliceblue;
 }
 
 .card-container {
